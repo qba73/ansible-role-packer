@@ -1,38 +1,48 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+Ansible role for installing Packer.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+CentOS / RedHat 7 
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+    - packer_ver: <version> 
+    - packer_checksum: <checksum> 
+    - packer_dest_path: /usr/local/bin
+    - packer_dest_link: /usr/bin
+
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+Unzip package will be installed if it's not installed already.
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+How to use the role with default params:
 
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
+         - { role: packer }
 
-License
--------
 
-BSD
+How to use the role to install specific version of Packer:
+
+    - hosts: servers
+      roles:
+         - { role: packer, packer_ver: 0.12.2, packer_checksum: 035d0ea1fe785ab6b673bc2a79399125d4014f29151e106635fa818bb726bebf }
+
+Checksums can be downloaded from [packer.io page](https://releases.hashicorp.com/packer/).
+
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+todo
+

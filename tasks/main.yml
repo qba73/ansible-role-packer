@@ -1,2 +1,24 @@
 ---
-# tasks file for ansible-role-packer
+- name: make sure unzip utils are installed
+  yum:
+    name: unzip
+    state: present
+
+- name: download Packer
+  get_url:
+    url: "{{ packer_url }}"
+    dest: /tmp/{{ packer_zip }}
+    checksum: sha256:{{ packer_checksum }}
+
+- name: unarchive Packer
+  unarchive:
+    src: /tmp/{{ packer_zip }}
+    dest: "{{ packer_dest_path }}/"
+    remote_src: True
+
+- name: create sym link {{ packer_dest_name }} to packer
+  file:
+    src: "{{ packer_dest_path }}/packer"
+    dest: "{{ packer_dest_link }}/{{ packer_dest_name }}"
+    state: link
+
