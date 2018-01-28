@@ -44,5 +44,5 @@ Checksums can be downloaded from [packer.io page](https://releases.hashicorp.com
 Author Information
 ------------------
 
-todo
+[Jakub Jarosz](https://twitter.com/qba73)
 
